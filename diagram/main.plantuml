@@ -1,0 +1,333 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class AddCardsWindowController {
+  + AddCardsWindowController(): 
+  - showSuccess(String, String): void
+  - addCategory(): void
+  - addCardToCategory(): void
+  - showError(String, String): void
+  - initialize(): void
+}
+class Board {
+  - Board(): 
+  + addCard(Card): void
+  + cleanCards(): void
+  + addCardObservers(Observer): void
+   instance: Board
+   cards: ArrayList<Card>
+}
+class Card {
+  + Card(String, String): 
+  + addForbiddenWords(ArrayList<String>): void
+   forbiddenWords: ArrayList<String>
+   word: String
+   isRevealed: boolean
+   color: String
+}
+class Category {
+  + Category(): 
+}
+class ClueStats {
+  + ClueStats(int, int): 
+  + toString(): String
+   clueNb: int
+   correctGuesses: int
+}
+class ConfigWindowController {
+  + ConfigWindowController(): 
+  - onStartGame(): void
+  - showError(String, String): void
+  + initialize(): void
+  - isNumeric(String): boolean
+}
+class Game {
+  - Game(): 
+  - initializeRevealedTiles(): void
+  - checkWinConditions(): void
+  - populateBoard(ArrayList<Card>, int): void
+  + changeTurn(): void
+  + isTileRevealed(int, int): boolean
+  - handleAssassinCard(): void
+  + clueIsValid(String): boolean
+  + loadGame(Game): void
+  + initializeGame(int, String, String, boolean): void
+  + addGuess(Guess): void
+  - initializeBoard(): void
+  + returnCard(Card): void
+  + startTimer(): void
+  - stopTimer(): void
+  - getShuffledCards(String, int): ArrayList<Card>
+  + submitClue(String, int): int
+  + setSaved(boolean): boolean
+  + revealTile(int, int): void
+  + setPageManager(): void
+   instance: Game
+   isGameOver: boolean
+   blueReturned: int
+   redReturned: int
+   imagesMode: boolean
+   nbCardsReturned: int
+   boardSize: int
+   blueBegin: boolean
+   spyTurn: boolean
+   timeLimit: int
+   stats: Stats
+   blueTurn: boolean
+   isTimerRunning: boolean
+   board: Board
+   category: String
+   lastGuess: Guess
+   isSaved: boolean
+}
+class GameOverControllerBlueWin {
+  + GameOverControllerBlueWin(): 
+  + initialize(): void
+}
+class GameOverControllerRedWin {
+  + GameOverControllerRedWin(): 
+  + initialize(): void
+}
+class GameSave {
+  - GameSave(): 
+  + saveGame(): void
+  + loadGame(): void
+   instance: GameSave
+}
+class Guess {
+  + Guess(String, int): 
+   clue: String
+   nbWords: int
+}
+class GuesserBoardController {
+  + GuesserBoardController(): 
+  - updateRevealedTiles(): void
+  - onCardClicked(StackPane, Card): void
+  + initialize(): void
+  + reagir(): void
+  - getNodeFromGridPane(GridPane, int, int): Node?
+  - populateBoard(int): void
+  - convertColorToCSS(String): String
+  - updateBackgroundColor(): void
+}
+class GuesserViewController {
+  + GuesserViewController(): 
+  - loadFrames(): void
+  - stopTimeLine(): void
+  - turn(): void
+  - action(): void
+  - startAnimationAndCountdown(): void
+  + reagir(): void
+  + initialize(): void
+  - updateBackground(): void
+}
+class JsonReader {
+  + JsonReader(): 
+  - showError(String, String): void
+  + addCategory(String, String): boolean
+  + getCategories(String): Map<String, Category>
+  + addWordToCategory(String, String, String): boolean
+  + getCategoryWordCount(String): int
+  + jsonReader(String, String, boolean): ArrayList<Card>
+}
+class Key {
+  - Key(): 
+  + newKey(): void
+  - initialiserGrille(): void
+  - assignColorsToCards(): void
+  + getCouleur(int, int): Color
+  + addObserver(Observer): void
+  - notifyObservers(): void
+   lignes: int
+   colonnes: int
+   instance: Key
+}
+class KeyController {
+  + KeyController(): 
+  - handleToggleKeyButton(): void
+  - populateKeyGrid(int): void
+  + initialize(): void
+  + updateKeyGrid(): void
+  + reagir(): void
+}
+class Main {
+  + Main(): 
+  + start(Stage): void
+  + main(String[]): void
+}
+class MenuBarController {
+  + MenuBarController(): 
+  + initialize(): void
+  - Sauvegarder(ActionEvent): void
+  - AfficherStatistiques(ActionEvent): void
+  - Charger(ActionEvent): void
+  - RetourAcceuil(ActionEvent): void
+}
+class MenuWindowController {
+  + MenuWindowController(): 
+  - openWebpage(String): void
+  - initialize(): void
+}
+interface Observer << interface >> {
+  + reagir(): void
+}
+class PageManager {
+  - PageManager(): 
+  + loadSpyView(): void
+  + loadConfigWindowView(): void
+  + loadMenuWindowView(): void
+  + loadAddCardsWindowView(): void
+  + loadGameOverViewRedWin(): void
+  + loadGameOverViewBlueWin(): void
+  - windowClose(WindowEvent): void
+  + loadGuesserView(): void
+  + closeSpyView(): void
+  + loadGameOverSpyViewRedWin(): void
+  + loadStatsView(): void
+  + loadGameOverSpyViewBlueWin(): void
+   guesserBoardController: GuesserBoardController
+   instance: PageManager
+   primaryStage: Stage
+   spyBoardController: SpyBoardController
+}
+class Root {
+  + Root(): 
+}
+class SpyBoardController {
+  + SpyBoardController(): 
+  - updateBackgroundColor(): void
+  + reagir(): void
+  - convertColorToCSS(String): String
+  - updateRevealedTiles(): void
+  - getNodeByRowColumnIndex(int, int, GridPane): StackPane?
+  + initialize(): void
+  - populateBoard(int): void
+}
+class SpyViewController {
+  + SpyViewController(): 
+  + reagir(): void
+  - updateBackground(): void
+  + initialize(): void
+}
+class Stats {
+  + Stats(): 
+  + incrementGamesLaunched(): void
+  + addRedTeamClue(int, int): void
+  + toString(): String
+  + addCorrectGuesses(int): void
+  + incrementRedTeamWins(): void
+  + incrementBlueTeamWins(): void
+  + addBlueTeamClue(int, int): void
+   blueTeamWins: int
+   blueTeamClueSubmissions: int
+   blueTeamClueStats: ArrayList<ClueStats>
+   totalCorrectGuesses: int
+   redTeamClueStats: ArrayList<ClueStats>
+   redTeamClueSubmissions: int
+   redTeamWins: int
+   gamesLaunched: int
+}
+class StatsController {
+  + StatsController(): 
+  - updateChart(String): void
+  - resumeButtonAction(): void
+  - displayWinsVsGamesPieChart(): void
+  - displayCluesGivenBarChart(): void
+  - setupDataSelector(): void
+  - displayRedTeamStackedBarChart(): void
+  + initialize(): void
+  - updateStatsDisplay(): void
+  - displayBlueTeamStackedBarChart(): void
+   stats: Stats
+}
+class Subject {
+  + Subject(): 
+  + ajouterObservateur(Observer): void
+  + notifierObservateurs(): void
+}
+class TopGuesserController {
+  + TopGuesserController(): 
+  - startFading(): void
+  - stopFading(): void
+  + reagir(): void
+  + initialize(): void
+}
+class TopSpyController {
+  + TopSpyController(): 
+  - stopFading(): void
+  - showError(String, String): void
+  - startFading(): void
+  + submitClue(): void
+  + initialize(): void
+  + reagir(): void
+}
+class Utils {
+  + Utils(): 
+  + saveConfirmation(): int
+}
+class Word {
+  + Word(): 
+}
+
+AddCardsWindowController  "1" *-[#595959,plain]-> "pageManager\n1" PageManager               
+Board                     "1" *-[#595959,plain]-> "cards\n*" Card                      
+Card                       -[#000082,plain]-^  Subject                   
+Category                  "1" *-[#595959,plain]-> "mots\n*" Word                      
+ClueStats                  +-[#820000,plain]-  Stats                     
+ConfigWindowController    "1" *-[#595959,plain]-> "game\n1" Game                      
+ConfigWindowController    "1" *-[#595959,plain]-> "key\n1" Key                       
+ConfigWindowController    "1" *-[#595959,plain]-> "pageManager\n1" PageManager               
+Game                      "1" *-[#595959,plain]-> "board\n1" Board                     
+Game                       -[#595959,dashed]->  Guess                     : "«create»"
+Game                      "1" *-[#595959,plain]-> "pageManager\n1" PageManager               
+Game                       -[#595959,dashed]->  Stats                     : "«create»"
+Game                      "1" *-[#595959,plain]-> "stats\n1" Stats                     
+Game                       -[#000082,plain]-^  Subject                   
+GameOverControllerBlueWin "1" *-[#595959,plain]-> "pageManager\n1" PageManager               
+GameOverControllerRedWin  "1" *-[#595959,plain]-> "pageManager\n1" PageManager               
+GameSave                  "1" *-[#595959,plain]-> "game\n1" Game                      
+GameSave                  "1" *-[#595959,plain]-> "key\n1" Key                       
+GuesserBoardController    "1" *-[#595959,plain]-> "board\n1" Board                     
+GuesserBoardController    "1" *-[#595959,plain]-> "game\n1" Game                      
+GuesserBoardController     -[#008200,dashed]-^  Observer                  
+GuesserBoardController    "1" *-[#595959,plain]-> "pageManager\n1" PageManager               
+GuesserViewController     "1" *-[#595959,plain]-> "game\n1" Game                      
+GuesserViewController     "1" *-[#595959,plain]-> "guesserBoardController\n1" GuesserBoardController    
+GuesserViewController      -[#008200,dashed]-^  Observer                  
+JsonReader                 -[#595959,dashed]->  Card                      : "«create»"
+JsonReader                 -[#595959,dashed]->  Category                  : "«create»"
+JsonReader                 -[#595959,dashed]->  Word                      : "«create»"
+Key                       "1" *-[#595959,plain]-> "game\n1" Game                      
+Key                       "1" *-[#595959,plain]-> "cards\n*" Observer                  
+KeyController             "1" *-[#595959,plain]-> "game\n1" Game                      
+KeyController             "1" *-[#595959,plain]-> "key\n1" Key                       
+KeyController              -[#008200,dashed]-^  Observer                  
+MenuBarController         "1" *-[#595959,plain]-> "game\n1" Game                      
+MenuBarController         "1" *-[#595959,plain]-> "gamesave\n1" GameSave                  
+MenuBarController         "1" *-[#595959,plain]-> "pageManager\n1" PageManager               
+MenuWindowController      "1" *-[#595959,plain]-> "pageManager\n1" PageManager               
+PageManager               "1" *-[#595959,plain]-> "guesserBoardController\n1" GuesserBoardController    
+PageManager               "1" *-[#595959,plain]-> "spyBoardController\n1" SpyBoardController        
+PageManager                -[#000082,plain]-^  Subject                   
+Root                      "1" *-[#595959,plain]-> "categories\n*" Category                  
+SpyBoardController        "1" *-[#595959,plain]-> "board\n1" Board                     
+SpyBoardController        "1" *-[#595959,plain]-> "game\n1" Game                      
+SpyBoardController         -[#008200,dashed]-^  Observer                  
+SpyBoardController        "1" *-[#595959,plain]-> "pageManager\n1" PageManager               
+SpyViewController         "1" *-[#595959,plain]-> "game\n1" Game                      
+SpyViewController          -[#008200,dashed]-^  Observer                  
+SpyViewController         "1" *-[#595959,plain]-> "SpyBoardController\n1" SpyBoardController        
+Stats                     "1" *-[#595959,plain]-> "blueTeamClueStats\n*" ClueStats                 
+Stats                      -[#595959,dashed]->  ClueStats                 : "«create»"
+StatsController           "1" *-[#595959,plain]-> "game\n1" Game                      
+StatsController           "1" *-[#595959,plain]-> "pageManager\n1" PageManager               
+StatsController           "1" *-[#595959,plain]-> "stats\n1" Stats                     
+Subject                   "1" *-[#595959,plain]-> "observateurs\n*" Observer                  
+TopGuesserController      "1" *-[#595959,plain]-> "game\n1" Game                      
+TopGuesserController       -[#008200,dashed]-^  Observer                  
+TopSpyController          "1" *-[#595959,plain]-> "game\n1" Game                      
+TopSpyController           -[#008200,dashed]-^  Observer                  
+@enduml

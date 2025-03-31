@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="codingweek.controllers.GameOverControllerBlueWin"
+            prefWidth="600" prefHeight="400"
+            style="-fx-background-color: black;">
+    <!--    Zone CENTRE : On affiche une image    -->
+    <center>
+        <ImageView fx:id="imageCenter"
+                   fitWidth="600"
+                   preserveRatio="true"
+                   pickOnBounds="true" />
+    </center>
+
+    <!--    Zone BOTTOM : Un conteneur HBox pour placer le bouton "Accueil" à droite    -->
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Button fx:id="accueilButton" text="Back to menu"
+                    style="-fx-background-color: rgb(180, 73, 55);
+                           -fx-text-fill: white;
+                           -fx-font-size: 18px;
+                           -fx-background-radius: 20;"/>
+
+            <Button fx:id="statsButton" text="Show stats"
+                    style="-fx-background-color: rgb(239,228,207);
+                           -fx-text-fill: black;
+                           -fx-font-size: 18px;
+                           -fx-background-radius: 20;"/>
+        </HBox>
+    </bottom>
+</BorderPane>

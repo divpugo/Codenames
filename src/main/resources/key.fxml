@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="codingweek.controllers.KeyController" spacing="10" style="-fx-padding: 20;">
+    <Button text="Show key" fx:id="toggleKeyButton" style="-fx-background-color: rgb(52, 58, 64);
+                           -fx-text-fill: white;
+                           -fx-font-size: 15px;
+                           -fx-background-radius: 20;"/>
+    <GridPane fx:id="gridPane" visible="false">
+        <!-- Grid will be dynamically populated -->
+    </GridPane>
+</VBox>
+

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="codingweek.controllers.MenuWindowController"
+        prefWidth="600" prefHeight="400"
+        style="-fx-background-image: url('/Images/Fond.png'); 
+               -fx-background-size: cover; 
+               -fx-background-repeat: no-repeat;">
+
+    <!-- TOP : on encapsule le Label et le bouton "RÈGLES" dans un BorderPane -->
+    <top>
+        <BorderPane>
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <!-- Titre centré -->
+            <center>
+                <Label
+                        text="Group 25             "
+                        style="-fx-font-size: 24px; -fx-font-weight: bold;"
+                        BorderPane.alignment="CENTER"/>
+            </center>
+
+            <!-- Bouton "RÈGLES" à gauche -->
+            <left>
+                <Button text="Rules" fx:id="rulesButton"
+                        style="-fx-background-color: rgb(147, 147, 147);
+                               -fx-text-fill: white;
+                               -fx-font-size: 18px;
+                               -fx-background-radius: 20;"
+                        BorderPane.alignment="CENTER"/>
+            </left>
+        </BorderPane>
+    </top>
+
+    <!-- CENTRE : juste le bouton "PLAY" (on retire "RÈGLES" d’ici) -->
+    <center>
+        <VBox spacing="10" alignment="CENTER">
+            <padding>
+                <Insets top="230"/>
+            </padding>
+            <Button text="PLAY" fx:id="playButton"
+                    style="-fx-background-color:  rgb(120,169,62);
+                           -fx-text-fill: white;
+                           -fx-font-size: 18px;
+                           -fx-background-radius: 20;"/>
+            <padding>
+                <Insets top="250"/>
+            </padding>
+            <Button text="ADD CARDS" fx:id="ajouterCartesButton"
+                    style="-fx-background-color:  rgb(239,228,207);
+                           -fx-text-fill: black;
+                           -fx-font-size: 18px;
+                           -fx-background-radius: 20;"/>
+        </VBox>
+    </center>
+
+    <!-- BOTTOM : bouton "Quit" à droite -->
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" >
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Button text="Quit" fx:id="quitButton"
+                    style="-fx-background-color: rgb(180, 73, 55);
+                           -fx-text-fill: white;
+                           -fx-font-size: 18px;
+                           -fx-background-radius: 20;"/>
+        </HBox>
+    </bottom>
+</BorderPane>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="codingweek.controllers.StatsController" style="-fx-background-image: url('/Images/Statistiques.png'); 
+               -fx-background-size: 93% 100%;
+               -fx-background-color: black; 
+               -fx-background-repeat: no-repeat;">
+    <top>
+        <fx:include source="menuBar.fxml" />
+    </top>
+    <center>
+        <!-- Wrap the entire VBox in a ScrollPane -->
+        <!-- <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;"> -->
+            <VBox spacing="10" alignment="CENTER">
+                <VBox.margin>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </VBox.margin>
+
+                <!-- Texte entouré par une VBox avec marges -->
+                <VBox spacing="5" alignment="CENTER" style="-fx-background-color: rgba(255, 255, 255, 0.5); -fx-padding: 10; -fx-border-radius: 5; -fx-background-radius: 5;">
+                    <VBox.margin>
+                        <Insets left="200" right="200" top ="20" bottom="20"/>
+                    </VBox.margin>
+
+                    <Label text="Game Statistics" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: black;"/>
+                    <Region prefHeight="10"/>
+                    <!-- General stats labels -->
+                    <Label fx:id="gamesLaunchedLabel" text="Games Launched : 0" style="-fx-font-size: 16px; -fx-text-fill: black;"/>
+                    <Label fx:id="blueTeamWinsLabel" text="Blue Team Wins : 0" style="-fx-font-size: 16px; -fx-text-fill: black;"/>
+                    <Label fx:id="redTeamWinsLabel" text="Red Team Wins : 0" style="-fx-font-size: 16px; -fx-text-fill: black;"/>
+                    <Label fx:id="blueTeamClueSubmissionsLabel" text="Blue Team Clues Given : 0" style="-fx-font-size: 16px; -fx-text-fill: black;"/>
+                    <Label fx:id="redTeamClueSubmissionsLabel" text="Red Team Clues Given : 0" style="-fx-font-size: 16px; -fx-text-fill: black;"/>
+
+                    <!-- Detailed clue stats -->
+                    <VBox spacing="10"> <!-- Reduced spacing -->
+                        <Label text="Blue Team Clue Details :" style="-fx-font-size: 16px; -fx-text-fill: black;"/>
+                        <ScrollPane fitToWidth="true">
+                            <ListView fx:id="blueTeamClueStatsList" prefHeight="100"/>
+                        </ScrollPane>
+                        <Label text="Red Team Clue Details :" style="-fx-font-size: 16px; -fx-text-fill: black;"/>
+                        <ScrollPane fitToWidth="true">
+                            <ListView fx:id="redTeamClueStatsList" prefHeight="100"/>
+                        </ScrollPane>
+                    </VBox>
+
+                    <!-- Dropdown for selecting data type -->
+                    <HBox spacing="10" alignment="CENTER">
+                        <Label text="Select Data to Display :" style="-fx-font-size: 16px; -fx-text-fill: black;"/>
+                        <ComboBox fx:id="dataSelector" prefWidth="200"/>
+                    </HBox>
+
+                    <!-- Chart placeholder -->
+                    <StackPane VBox.vgrow="ALWAYS">
+                        <PieChart fx:id="pieChart" visible="false" minHeight="300" minWidth="300"/>
+                        <BarChart fx:id="barChart" visible="false" minHeight="300" minWidth="300">
+                            <xAxis>
+                                <CategoryAxis fx:id="categoryAxis" label="Category"/>
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis fx:id="numberAxis" label="Value"/>
+                            </yAxis>
+                        </BarChart>
+                    </StackPane>
+
+                    <Button text="Resume" fx:id="resumeButton"
+                    style="-fx-background-color: rgb(180, 73, 55);
+                            -fx-text-fill: white;
+                            -fx-font-size: 18px;
+                            -fx-background-radius: 20;" />
+                </VBox>
+            </VBox>
+        <!-- </ScrollPane> -->
+    </center>
+</BorderPane>

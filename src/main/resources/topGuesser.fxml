@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="codingweek.controllers.TopGuesserController">
+    <HBox style="-fx-padding: 20 0 20 20;">
+        <Label fx:id="turnLabel" text="Au tour de l'équipe rouge"/>
+    </HBox>
+    <HBox spacing="35" style="-fx-padding: 0 0 20 20;">
+            <Label fx:id="clueLabel" text="No clue given yet" style="-fx-font-size: 14px;"/>
+            <Label fx:id="numberLabel" text="" style="-fx-font-size: 14px;"/>
+    </HBox>
+</VBox>

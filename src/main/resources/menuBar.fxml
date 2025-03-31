@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+
+<MenuBar xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="codingweek.controllers.MenuBarController">
+    <Menu text="Menu">
+        <MenuItem text="Load a game" onAction="#Charger"/>
+        <MenuItem text="Save the game" onAction="#Sauvegarder"/>
+        <MenuItem text="Back to main menu" onAction="#RetourAcceuil"/>
+    </Menu>
+    <Menu text="Statistics">
+        <MenuItem text="Show statistics" onAction="#AfficherStatistiques"/>
+    </Menu>
+</MenuBar>

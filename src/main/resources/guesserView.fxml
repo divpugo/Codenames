@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="codingweek.controllers.GuesserViewController"
+            prefWidth="800" prefHeight="600"
+            fx:id="rootPane">
+   <top>
+      <fx:include source="menuBar.fxml" />
+   </top>
+   <center>
+      <VBox>
+         <fx:include source="topGuesser.fxml" />
+         <HBox>
+            <fx:include source="guessBoard.fxml" fx:id="guesserBoard" />
+            <VBox>
+               <Label fx:id="timeLabel" text="Temps restant : 60" />
+               <ImageView fx:id="sandTimerView" fitWidth="150" layoutX="0" layoutY="0" />
+            </VBox>
+         </HBox>
+         <Button fx:id="btnTurn" text="End turn"
+                 style="-fx-background-color: rgb(230, 218, 198);
+                           -fx-text-fill: black;
+                           -fx-font-size: 18px;
+                           -fx-background-radius: 20;"/>
+      </VBox>
+   </center>
+</BorderPane>
+

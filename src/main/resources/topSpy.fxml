@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="codingweek.controllers.TopSpyController">
+    <HBox style="-fx-padding: 20 0 20 20;">
+        <Label fx:id="turnLabel" text="It's red's turn" style="-fx-font-weight: bold;" alignment="CENTER"/>
+    </HBox>
+    <HBox spacing="10" style="-fx-padding: 0 0 20 20;">
+        <TextField fx:id="clueField" promptText="Enter a clue" style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 7;"/>
+        <TextField fx:id="numberField" promptText="Enter a number" style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 7;"/>
+        <Button text="Validate" onAction="#submitClue"
+                style="-fx-background-color: rgb(120, 169, 62);
+                           -fx-text-fill: white;
+                           -fx-font-size: 15px;
+                           -fx-background-radius: 20;"/>
+    </HBox>
+</VBox>
